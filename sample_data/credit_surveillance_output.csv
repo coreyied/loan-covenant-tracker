@@ -1,0 +1,7 @@
+ticker,company_name,sector,fiscal_period,ebitda_m,net_debt_m,interest_expense_m,total_debt_m,net_leverage_ratio,qoq_leverage_drift,interest_coverage_ratio,max_net_leverage_ratio,min_interest_coverage_ratio
+APEX,Apex Precision Manufacturing Corp.,Industrials,2026-Q2,180.0,390.0,28.0,450.0,2.0,,6.0,3.5,3
+APEX,Apex Precision Manufacturing Corp.,Industrials,2026-Q3,188.0,375.0,27.5,440.0,1.0,-1.0,6.84,3.5,3
+KestrelRet,Kestrel Omnichannel Logistics Inc.,Supply Chain & Retail,2026-Q2,90.0,260.0,26.0,295.0,2.0,,3.0,3.25,2.75
+KestrelRet,Kestrel Omnichannel Logistics Inc.,Supply Chain & Retail,2026-Q3,66.0,305.0,31.0,325.0,4.0,2.0,2.0,3.25,2.75
+VanguardMid,Vanguard Midstream Energy Partners,Energy & Midstream,2026-Q2,280.0,960.0,82.0,1050.0,3.0,,3.0,4,2.5
+VanguardMid,Vanguard Midstream Energy Partners,Energy & Midstream,2026-Q3,250.0,1015.0,94.0,1080.0,4.0,1.0,2.0,4,2.5

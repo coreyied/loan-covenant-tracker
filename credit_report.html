@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Credit Covenant Report - Q3 2026</title>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f4f5f7;
+        color: #1c1e21;
+        margin: 24px;
+    }
+    h1 { font-size: 22px; margin-bottom: 4px; }
+    .subtitle { color: #555; font-size: 13px; margin-top: 0; margin-bottom: 20px; }
+    .summary-bar {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 20px;
+    }
+    .stat-box {
+        background: #fff;
+        border: 1px solid #d1d5db;
+        padding: 12px 18px;
+        border-radius: 4px;
+        min-width: 180px;
+    }
+    .stat-label { font-size: 12px; color: #666; }
+    .stat-val { font-size: 20px; font-weight: bold; margin-top: 4px; }
+    table.data-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        border: 1px solid #d1d5db;
+        margin-bottom: 24px;
+        font-size: 13px;
+    }
+    .data-table th {
+        background: #e5e7eb;
+        text-align: left;
+        padding: 9px 10px;
+        border-bottom: 1px solid #d1d5db;
+    }
+    .data-table td {
+        padding: 9px 10px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    .status-breach { color: #b91c1c; font-weight: bold; }
+    .status-ok { color: #15803d; font-weight: bold; }
+    .text-red { color: #b91c1c; font-weight: bold; }
+    .box {
+        background: #fff;
+        border: 1px solid #d1d5db;
+        padding: 16px;
+        margin-bottom: 16px;
+        border-radius: 4px;
+    }
+    .box h3 { margin-top: 0; margin-bottom: 10px; font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
+    .two-col {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 20px;
+    }
+    .grid-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+        text-align: center;
+    }
+    .grid-table th, .grid-table td {
+        border: 1px solid #d1d5db;
+        padding: 6px;
+    }
+    .grid-table th { background: #f3f4f6; }
+    .fail-cell { background: #fee2e2; color: #991b1b; }
+    .pass-cell { background: #dcfce7; color: #166534; }
+    .meta { font-size: 12px; color: #555; margin: 4px 0 8px 0; }
+    .quote-box {
+        background: #f9fafb;
+        border-left: 3px solid #6b7280;
+        padding: 10px;
+        font-size: 13px;
+        line-height: 1.45;
+    }
+    mark {
+        background-color: #fef08a;
+        padding: 0 2px;
+    }
+</style>
+</head>
+<body>
+    <h1>Corporate Credit & Covenant Summary (2026-Q3)</h1>
+    <p class="subtitle">Generated from SQLite view (v_credit_covenant_monitor) and 10-K text diff table</p>
+
+    <div class="summary-bar">
+        <div class="stat-box">
+            <div class="stat-label">Total Tracked Debt</div>
+            <div class="stat-val">$1,845.0M</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Borrowers in Breach</div>
+            <div class="stat-val" style="color:#b91c1c;">2 / 3</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Total Debt Paydown Needed</div>
+            <div class="stat-val">$105.50M</div>
+        </div>
+    </div>
+
+    <table class="data-table">
+        <tr>
+            <th>Borrower</th>
+            <th>Sector</th>
+            <th>EBITDA</th>
+            <th>Net Debt</th>
+            <th>Net Leverage</th>
+            <th>QoQ Drift</th>
+            <th>Int. Coverage</th>
+            <th>Headroom / Cure</th>
+            <th>Status</th>
+        </tr>
+        
+        <tr>
+            <td><b>Apex Precision Manufacturing Corp.</b> (APEX)</td>
+            <td>Industrials</td>
+            <td>$188.0M</td>
+            <td>$375.0M</td>
+            <td><b>1.99x</b> (<= 3.50x)</td>
+            <td>-0.17x</td>
+            <td><b>6.84x</b> (>= 3.00x)</td>
+            <td>+$283.00M capacity</td>
+            <td><span class='status-ok'>OK</span></td>
+        </tr>
+        
+        <tr>
+            <td><b>Kestrel Omnichannel Logistics Inc.</b> (KestrelRet)</td>
+            <td>Supply Chain & Retail</td>
+            <td>$66.0M</td>
+            <td>$305.0M</td>
+            <td><b>4.62x</b> (<= 3.25x)</td>
+            <td>+1.73x</td>
+            <td><b>2.13x</b> (>= 2.75x)</td>
+            <td><span class='text-red'>-$90.50M cure needed</span></td>
+            <td><span class='status-breach'>BREACH</span></td>
+        </tr>
+        
+        <tr>
+            <td><b>Vanguard Midstream Energy Partners</b> (VanguardMid)</td>
+            <td>Energy & Midstream</td>
+            <td>$250.0M</td>
+            <td>$1015.0M</td>
+            <td><b>4.06x</b> (<= 4.00x)</td>
+            <td>+0.63x</td>
+            <td><b>2.66x</b> (>= 2.50x)</td>
+            <td><span class='text-red'>-$15.00M cure needed</span></td>
+            <td><span class='status-breach'>BREACH</span></td>
+        </tr>
+        
+    </table>
+
+    
+        <div class="box">
+            <h3>Apex Precision Manufacturing Corp. (APEX) - 2026-Q3</h3>
+            <div class="two-col">
+                <div>
+                    <p><b>Downside Sensitivity Table (Leverage & Coverage):</b></p>
+                    
+    <table class="grid-table">
+        <tr>
+            <th>Shock Scenario</th>
+            <th>+0 bps</th>
+            <th>+100 bps</th>
+            <th>+150 bps</th>
+            <th>+200 bps</th>
+        </tr>
+        <tr><td><b>0% EBITDA</b></td><td class='pass-cell'>1.99x lev<br><small>6.84x cov</small></td><td class='pass-cell'>1.99x lev<br><small>5.89x cov</small></td><td class='pass-cell'>1.99x lev<br><small>5.51x cov</small></td><td class='pass-cell'>1.99x lev<br><small>5.18x cov</small></td></tr><tr><td><b>-10% EBITDA</b></td><td class='pass-cell'>2.22x lev<br><small>6.15x cov</small></td><td class='pass-cell'>2.22x lev<br><small>5.30x cov</small></td><td class='pass-cell'>2.22x lev<br><small>4.96x cov</small></td><td class='pass-cell'>2.22x lev<br><small>4.66x cov</small></td></tr><tr><td><b>-15% EBITDA</b></td><td class='pass-cell'>2.35x lev<br><small>5.81x cov</small></td><td class='pass-cell'>2.35x lev<br><small>5.01x cov</small></td><td class='pass-cell'>2.35x lev<br><small>4.69x cov</small></td><td class='pass-cell'>2.35x lev<br><small>4.40x cov</small></td></tr><tr><td><b>-20% EBITDA</b></td><td class='pass-cell'>2.49x lev<br><small>5.47x cov</small></td><td class='pass-cell'>2.49x lev<br><small>4.71x cov</small></td><td class='pass-cell'>2.49x lev<br><small>4.41x cov</small></td><td class='pass-cell'>2.49x lev<br><small>4.14x cov</small></td></tr>
+    </table>
+    
+                </div>
+                <div>
+                    <p><b>10-K Risk Factor Diff Notes:</b></p>
+                    <p class="meta">Similarity vs Prior Filing: 0.000 | New Risk Words: +0</p>
+                    <div class="quote-box">
+                        "No major changes noted."
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="box">
+            <h3>Kestrel Omnichannel Logistics Inc. (KestrelRet) - 2026-Q3</h3>
+            <div class="two-col">
+                <div>
+                    <p><b>Downside Sensitivity Table (Leverage & Coverage):</b></p>
+                    
+    <table class="grid-table">
+        <tr>
+            <th>Shock Scenario</th>
+            <th>+0 bps</th>
+            <th>+100 bps</th>
+            <th>+150 bps</th>
+            <th>+200 bps</th>
+        </tr>
+        <tr><td><b>0% EBITDA</b></td><td class='fail-cell'>4.62x lev<br><small>2.13x cov</small></td><td class='fail-cell'>4.62x lev<br><small>1.93x cov</small></td><td class='fail-cell'>4.62x lev<br><small>1.84x cov</small></td><td class='fail-cell'>4.62x lev<br><small>1.76x cov</small></td></tr><tr><td><b>-10% EBITDA</b></td><td class='fail-cell'>5.13x lev<br><small>1.92x cov</small></td><td class='fail-cell'>5.13x lev<br><small>1.73x cov</small></td><td class='fail-cell'>5.13x lev<br><small>1.66x cov</small></td><td class='fail-cell'>5.13x lev<br><small>1.58x cov</small></td></tr><tr><td><b>-15% EBITDA</b></td><td class='fail-cell'>5.44x lev<br><small>1.81x cov</small></td><td class='fail-cell'>5.44x lev<br><small>1.64x cov</small></td><td class='fail-cell'>5.44x lev<br><small>1.56x cov</small></td><td class='fail-cell'>5.44x lev<br><small>1.50x cov</small></td></tr><tr><td><b>-20% EBITDA</b></td><td class='fail-cell'>5.78x lev<br><small>1.70x cov</small></td><td class='fail-cell'>5.78x lev<br><small>1.54x cov</small></td><td class='fail-cell'>5.78x lev<br><small>1.47x cov</small></td><td class='fail-cell'>5.78x lev<br><small>1.41x cov</small></td></tr>
+    </table>
+    
+                </div>
+                <div>
+                    <p><b>10-K Risk Factor Diff Notes:</b></p>
+                    <p class="meta">Similarity vs Prior Filing: 0.000 | New Risk Words: +0</p>
+                    <div class="quote-box">
+                        "No major changes noted."
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="box">
+            <h3>Vanguard Midstream Energy Partners (VanguardMid) - 2026-Q3</h3>
+            <div class="two-col">
+                <div>
+                    <p><b>Downside Sensitivity Table (Leverage & Coverage):</b></p>
+                    
+    <table class="grid-table">
+        <tr>
+            <th>Shock Scenario</th>
+            <th>+0 bps</th>
+            <th>+100 bps</th>
+            <th>+150 bps</th>
+            <th>+200 bps</th>
+        </tr>
+        <tr><td><b>0% EBITDA</b></td><td class='fail-cell'>4.06x lev<br><small>2.66x cov</small></td><td class='fail-cell'>4.06x lev<br><small>2.39x cov</small></td><td class='fail-cell'>4.06x lev<br><small>2.27x cov</small></td><td class='fail-cell'>4.06x lev<br><small>2.16x cov</small></td></tr><tr><td><b>-10% EBITDA</b></td><td class='fail-cell'>4.51x lev<br><small>2.39x cov</small></td><td class='fail-cell'>4.51x lev<br><small>2.15x cov</small></td><td class='fail-cell'>4.51x lev<br><small>2.04x cov</small></td><td class='fail-cell'>4.51x lev<br><small>1.95x cov</small></td></tr><tr><td><b>-15% EBITDA</b></td><td class='fail-cell'>4.78x lev<br><small>2.26x cov</small></td><td class='fail-cell'>4.78x lev<br><small>2.03x cov</small></td><td class='fail-cell'>4.78x lev<br><small>1.93x cov</small></td><td class='fail-cell'>4.78x lev<br><small>1.84x cov</small></td></tr><tr><td><b>-20% EBITDA</b></td><td class='fail-cell'>5.08x lev<br><small>2.13x cov</small></td><td class='fail-cell'>5.08x lev<br><small>1.91x cov</small></td><td class='fail-cell'>5.08x lev<br><small>1.81x cov</small></td><td class='fail-cell'>5.08x lev<br><small>1.73x cov</small></td></tr>
+    </table>
+    
+                </div>
+                <div>
+                    <p><b>10-K Risk Factor Diff Notes:</b></p>
+                    <p class="meta">Similarity vs Prior Filing: 0.000 | New Risk Words: +0</p>
+                    <div class="quote-box">
+                        "No major changes noted."
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+</body>
+</html>
