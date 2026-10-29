@@ -1,8 +1,8 @@
 # Loan Covenant & 10-K Tracker
 
-I built this project to practice connecting Python, SQL, and Java around a corporate finance workflow: tracking commercial loan covenants (Net Debt / EBITDA and Interest Coverage) and checking 10-K text disclosures for new risk language.
+I built this project to practice connecting Python, SQL, and Java around a corporate finance workflow tracking commercial loan covenants (Net Debt/EBITDA and Interest Coverage) and checking 10-K text disclosures for new risk language.
 
-Instead of keeping everything in one script, I split the workload across languages based on what each one is used for—Python for data loading and text diffing, SQLite for relational tables and window functions, and Java (`BigDecimal`) for strict compliance math and downside stress testing.
+Instead of keeping everything in one script, I split the workload across languages based on what each one is used for Python for data loading and text diffing, SQLite for relational tables and window functions, and Java (`BigDecimal`) for strict compliance math and downside stress testing.
 
 ## How It Works
 
