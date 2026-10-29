@@ -33,3 +33,42 @@ loan-covenant-tracker/
 │   └── sqlite-jdbc-3.46.1.0.jar      # SQLite JDBC driver
 └── sample_data/
     └── credit_surveillance_output.csv
+```
+
+## Running the Project Locally
+
+**Step 1:** Build the SQLite database and run the Python ingestion script:
+
+```bash
+python3 edgar_ingestor_and_redline.py
+```
+
+**Step 2:** Compile and run the Java compliance engine:
+
+Mac / Linux:
+
+```bash
+javac -cp ".:lib/*" CovenantStressEngine.java
+java --enable-native-access=ALL-UNNAMED -cp ".:lib/*" CovenantStressEngine
+```
+
+Windows (PowerShell):
+
+```powershell
+javac -cp ".;lib/*" CovenantStressEngine.java
+java --enable-native-access=ALL-UNNAMED -cp ".;lib/*" CovenantStressEngine
+```
+
+**Step 3:** Export to CSV (for Excel / Power BI) and generate the HTML report:
+
+```bash
+python3 export_data.py
+python3 generate_dashboard.py
+open credit_report.html
+```
+
+## Using the Output in Excel & Power BI
+
+* **Microsoft Excel:** Open `credit_surveillance_output.csv` directly in Excel, or connect to it via Power Query (Data > Get Data > From Text/CSV) to build pivot tables and apply conditional formatting on breached ratios.
+* **Power BI:** In Power BI Desktop or Power BI Service (`app.powerbi.com`), click Get Data > Text/CSV (or upload the CSV to your workspace) to build leverage bar charts and portfolio risk tables.
+* **Web Browser:** Open `credit_report.html` in any browser to view the portfolio summary, required debt paydown (equity cure) calculations, and color-coded stress test grids.
